@@ -1,4 +1,3 @@
-package com.foo.utils
 
 public void dockerTemplate(body) {
     podTemplate(
