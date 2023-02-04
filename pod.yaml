@@ -14,3 +14,9 @@ spec:
     - sleep
     args:
     - 99d
+  - name: docker
+    image: docker:latest
+    command:
+    - sleep
+    args:
+    - 99d

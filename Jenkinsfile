@@ -2,9 +2,9 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
     node(POD_LABEL) {
         stage('Get a Maven project') {
             git 'https://github.com/jenkinsci/kubernetes-plugin.git'
-            container('maven') {
+            container('docker') {
                 stage('Build a Maven project') {
-                    sh 'printenv'
+                    sh 'docker ps'
                 }
             }
         }
