@@ -1,11 +1,20 @@
 podTemplate(yaml: readTrusted('pod-mvn.yaml')) {
     podTemplate(yaml: readTrusted('pod-go.yaml')) {
         node(POD_LABEL) {
+            stage('Run maven and go commands') {
+                git 'https://github.com/jenkinsci/kubernetes-plugin.git'
+                sh '''
+                go -version
+                mvn -version
+                '''
+                }
+            }
+            
             stage('Get a Maven project') {
                 git 'https://github.com/jenkinsci/kubernetes-plugin.git'
                 container('golang') {
                     stage('Build a Maven project') {
-                        sh 'mvn -version'
+                        sh 'printenv'
                     }
                 }
             }
