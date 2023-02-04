@@ -3,7 +3,7 @@ podTemplate(yaml: readTrusted('pod-mvn.yaml')) {
         node(POD_LABEL) {
             stage('Get a Maven project') {
                 git 'https://github.com/jenkinsci/kubernetes-plugin.git'
-                container('maven') {
+                container('golang') {
                     stage('Build a Maven project') {
                         sh 'printenv'
                     }
