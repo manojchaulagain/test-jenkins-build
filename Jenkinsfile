@@ -5,7 +5,7 @@ podTemplate(yaml: readTrusted('pod-mvn.yaml')) {
                 git 'https://github.com/jenkinsci/kubernetes-plugin.git'
                 container('golang') {
                     stage('Build a Maven project') {
-                        sh 'printenv'
+                        sh 'java -version'
                     }
                 }
             }
@@ -15,6 +15,7 @@ podTemplate(yaml: readTrusted('pod-mvn.yaml')) {
                 container('golang') {
                     stage('Build a Go project') {
                         sh '''
+                        go version
                         printenv
                         ls -al
                         '''
