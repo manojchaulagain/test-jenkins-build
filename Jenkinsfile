@@ -1,3 +1,19 @@
+import com.foo.utils.PodTemplates
+
+podTemplates = new PodTemplates()
+podTemplates.dockerTemplate {
+  podTemplates.mavenTemplate {
+    node(POD_LABEL) {
+      container('docker') {
+        sh "echo hello from $POD_CONTAINER" // displays 'hello from docker'
+      }
+      container('maven') {
+        sh "echo hello from $POD_CONTAINER" // displays 'hello from maven'
+      }
+     }
+  }
+}
+
 podTemplate(yaml: readTrusted('pod-mvn.yaml')) {
     podTemplate(yaml: readTrusted('pod-go.yaml')) {
         node(POD_LABEL) {
