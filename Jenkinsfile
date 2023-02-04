@@ -1,5 +1,5 @@
-podTemplate(yaml: readTrusted('pod-mvn.yaml'), yamlMergeStrategy: merged()) {
-    podTemplate(yaml: readTrusted('pod-go.yaml'), yamlMergeStrategy: merged()) {
+podTemplate(yaml: readTrusted('pod-mvn.yaml')) {
+    podTemplate(yaml: readTrusted('pod-go.yaml')) {
         node(POD_LABEL) {
             stage('Get a Maven project') {
                 git 'https://github.com/jenkinsci/kubernetes-plugin.git'
