@@ -1,3 +1,6 @@
+#!groovy
+@Library('global-libs@com.foo.utils')
+
 import com.foo.utils.PodTemplates
 
 podTemplates = new PodTemplates()
