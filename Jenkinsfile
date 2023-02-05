@@ -1,7 +1,7 @@
 #!groovy
 @Library('global-libs@main')
 
-import com.foo.utils.PodTemplates
+import PodTemplates
 
 podTemplates = new PodTemplates()
 podTemplates.dockerTemplate {
