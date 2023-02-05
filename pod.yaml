@@ -14,3 +14,14 @@ spec:
     - sleep
     args:
     - 99d
+  - name: maven-alpine
+    image: maven:alpine
+    command:
+    - cat
+    tty: true
+  - name: busybox
+    image: busybox
+    command:
+    - cat
+    tty: true
+

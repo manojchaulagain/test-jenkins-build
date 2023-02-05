@@ -2,9 +2,17 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
     node(POD_LABEL) {
         stage('Get a Maven project') {
             git 'https://github.com/jenkinsci/kubernetes-plugin.git'
-            container('maven') {
+            container('maven-alpine') {
                 stage('Build a Maven project') {
-                    sh 'printenv'
+                    sh 'mvn -version'
+                }
+            }
+        }
+        
+        stage('Run busybox') {
+            container('busybox') {
+                stage('Running busybox') {
+                    sh '/bin/busybox'
                 }
             }
         }
@@ -16,6 +24,7 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
                     sh '''
                     printenv
                     ls -al
+                    go -version
                     '''
                 }
             }
