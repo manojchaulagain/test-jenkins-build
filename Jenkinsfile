@@ -2,8 +2,8 @@ podTemplate(containers: [containerTemplate(image: 'golang', name: 'golang', comm
     podTemplate(containers: [containerTemplate(image: 'maven', name: 'maven', command: 'cat', ttyEnabled: true)]) {
         node(POD_LABEL) { // gets a pod with both docker and maven
             sh '''
-            go version
             mvn -version
+            go version
         '''
         }
     }
