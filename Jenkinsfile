@@ -8,7 +8,7 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
                 }
             }
         }
-        
+
         stage('Run busybox') {
             container('busybox') {
                 stage('Running busybox') {
@@ -24,11 +24,10 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
                     sh '''
                     printenv
                     ls -al
-                    /go -version
+                    go -version
                     '''
                 }
             }
         }
-
     }
 }
