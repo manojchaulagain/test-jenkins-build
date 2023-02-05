@@ -1,5 +1,5 @@
 #!groovy
-@Library('global-libs@com.foo.utils')
+@Library('global-libs@main')
 
 import com.foo.utils.PodTemplates
 
