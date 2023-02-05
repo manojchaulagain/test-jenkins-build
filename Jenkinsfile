@@ -1,5 +1,9 @@
 podTemplate(yaml: readTrusted('pod.yaml')) {
     node(POD_LABEL) {
+        writeFile file: 'Dockerfile', text: 'FROM scratch'
+        container('docker') {
+            sh 'docker version && DOCKER_BUILDKIT=1 docker build --progress plain -t testing .'
+        }
         stage('Get a Maven project') {
             git 'https://github.com/jenkinsci/kubernetes-plugin.git'
             container('maven-alpine') {
