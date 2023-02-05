@@ -24,7 +24,7 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
                     sh '''
                     printenv
                     ls -al
-                    go -version
+                    /go -version
                     '''
                 }
             }
