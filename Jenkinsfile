@@ -1,33 +1,10 @@
-podTemplate(yaml: readTrusted('pod.yaml')) {
-    node(POD_LABEL) {
-        stage('Get a Maven project') {
-            git 'https://github.com/jenkinsci/kubernetes-plugin.git'
-            container('maven-alpine') {
-                stage('Build a Maven project') {
-                    sh 'mvn -version'
-                }
-            }
-        }
-
-        stage('Run busybox') {
-            container('busybox') {
-                stage('Running busybox') {
-                    sh '/bin/busybox'
-                }
-            }
-        }
-
-        stage('Get a Golang project') {
-            git url: 'https://github.com/hashicorp/terraform.git', branch: 'main'
-            container('golang') {
-                stage('Build a Go project') {
-                    sh '''
-                    printenv
-                    ls -al
-                    go version
-                    '''
-                }
-            }
+podTemplate(containers: [containerTemplate(image: 'golang', name: 'golang', command: 'cat', ttyEnabled: true)]) {
+    podTemplate(containers: [containerTemplate(image: 'maven', name: 'maven', command: 'cat', ttyEnabled: true)]) {
+        node(POD_LABEL) { // gets a pod with both docker and maven
+            sh '''
+            go version
+            mvn -version
+        '''
         }
     }
 }
