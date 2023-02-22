@@ -3,8 +3,8 @@ import static groovy.io.FileType.FILES
 println("Hello World")
 println("ls".execute().text)
 println("printenv".execute().text)
-println("ls -al /var/jenkins_home/workspace/test-pipeline".execute().text)
-println("ls -al /var/jenkins_home/workspace/testjobs/test-pipeline".execute().text)
+println("ls -al /var/jenkins_home/test-pipeline".execute().text)
+println("ls -al /var/jenkins_home/testjobs/test-pipeline".execute().text)
 
 
 
