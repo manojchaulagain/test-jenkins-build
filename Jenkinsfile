@@ -27,7 +27,7 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
                 stage('Build a Go project') {
                     sh '''
                     printenv
-                    ls -al
+                    ls -al /home/jenkins/agent/workspace/job-dsl-plugin
                     go version
                     '''
                 }
