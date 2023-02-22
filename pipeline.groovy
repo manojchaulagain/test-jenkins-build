@@ -7,7 +7,7 @@ println("ls -al /var/jenkins_home/workspace/test-pipeline".execute().text)
 
 
 
-new File(System.getenv('JENKINS_HOME') + '/workspace/test-pipeline').eachFileRecurse(FILES) {
+new File(System.getenv('JENKINS_HOME') + '/workspace/test-jobs/test-pipeline').eachFileRecurse(FILES) {
     if(it.name.endsWith('.groovy')) {
         println it
     }
