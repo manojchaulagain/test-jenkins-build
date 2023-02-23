@@ -6,7 +6,7 @@ println("printenv".execute().text)
 println("ls -al /var/jenkins_home/test-pipeline".execute().text)
 println("ls -al /var/jenkins_home/testjobs/test-pipeline".execute().text)
 
-String path = "${WORKSPACE}/testjobs/test-pipeline"
+String path = "${WORKSPACE}"
 
 new File(path).eachFileRecurse(FILES) {
     if(it.name.endsWith('.groovy')) {
