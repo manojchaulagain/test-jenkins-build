@@ -1,3 +1,9 @@
+properties([parameters([activeChoice(choiceType: 'PT_SINGLE_SELECT', description: 'Select a Service Name', filterLength: 1, filterable: false, name: 'SERVICE_NAME', randomName: 'choice-parameter-1120679675952', script: groovyScript(fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: false, script: '''return [\'Option 1\', \'Option 2\', \'Option 3\']
+'''])), activeChoiceHtml(choiceType: 'ET_ORDERED_LIST', description: 'Select a Node Type', name: 'NODE_TYPE', omitValueField: true, randomName: 'choice-parameter-1120689683646', referencedParameters: 'SERVICE_NAME', script: groovyScript(fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: false, script: '''if(SERVICE_NAME.equals("jenkins")) {
+    return [\'Option 1\', \'Option 2\', \'Option 3\']
+} else if (SERVICE_NAME.equals("jenkins-onprem")) {
+    return [\'Node 1\', \'Node 2\', \'Node 3\']
+}''']))])])
 podTemplate(yaml: readTrusted('pod.yaml')) {
     node(POD_LABEL) {
         writeFile file: 'Dockerfile', text: 'FROM scratch'
